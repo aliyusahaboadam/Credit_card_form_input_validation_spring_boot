@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+
+
+    <div class="container">
+        <h2>Registration</h2>
+        <form
+         method="post"
+         role="form"
+         th:action="@{/registration}"
+         th:object="${creditCard}"
+        >
+        
+        <span style="color: red" th:if="${#fields.hasErrors()}">
+          Please Fix the Following Errors and Resubmit the form
+        </span>
+        
+        
+            <input type="text" name="creditCardNumber" placeholder="Credit Card Number" required>
+             <span style="color: red" th:if="${#fields.hasErrors('creditCardNumber')}" th:errors="*{creditCardNumber}"></span>
+            
+            <input type="text" name="creditCardExpiration" placeholder="Credit Card Expiration" required>
+            <span style="color: red" th:if="${#fields.hasErrors('creditCardExpiration')}" th:errors="*{creditCardExpiration}"></span>
+            
+            <input type="text" name="creditCardCVV" placeholder="Credit Card CVV" required>
+            <span style="color: red" th:if="${#fields.hasErrors('creditCardCVV')}" th:errors="*{creditCardCVV}"></span>
+            
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>
